@@ -47,4 +47,9 @@ public class LoginUsersService {
         }
         return userFound;
     }
+
+    public LoginUsers getUserById(int id)
+    {
+        return userRepo.findById(id).get();
+    }
 }

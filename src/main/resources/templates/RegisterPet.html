@@ -6,13 +6,13 @@
     <title>Cadastrar Pet</title>
 </head>
 <body>
-    <form th:action="@{/insertUser}" th:object="${author}" method="POST">
-        <input type="hidden" name="idUser" th:value="${author.name}">
+    <form th:action="@{/}" method="POST">
+        <input type="hidden" name="idUser" th:value="${idUser}">
         <input type="text" name="name" placeholder="Nome">
         <input type="text" name="breed" placeholder="Raça">
         <input type="text" name="age" placeholder="Idade">
         <input type="text" name="weight" placeholder="Peso">
-        <input type="text" name="city" placeholder="Cidade" th:value="${author.name}">
+        <input type="text" name="city" placeholder="Cidade" th:value="${cityUser}">
         
         <input type="submit" value="Cadastrar">
 

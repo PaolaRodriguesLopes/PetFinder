@@ -38,9 +38,12 @@ public class LoginUsersController {
     }
 
     @GetMapping("/index")
-    public ModelAndView getIndex()
+    public ModelAndView getIndex(LoginUsers loginUser)
     {
         ModelAndView mv = new ModelAndView("pq");
+
+        mv.addObject("loginUser", loginUser);
+
         return mv;
     }
     
@@ -66,7 +69,7 @@ public class LoginUsersController {
             mv.addObject("msg", "E-mail e/ou senha incorretos. Tente novamente");
         }else{
             session.setAttribute("userSession", user);
-            return getIndex();
+            return getIndex(user);
         }
         return mv;
     }
