@@ -18,7 +18,7 @@ public class Pet implements Serializable{
     private Integer idPet;
     private String name;
     private String breed;
-    private Integer age;
+    private String age;
     private String weight;
     private String city;
 
@@ -58,11 +58,11 @@ public class Pet implements Serializable{
         this.breed = breed;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return this.age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

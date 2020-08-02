@@ -6,16 +6,38 @@
     <title>Cadastrar Pet</title>
 </head>
 <body>
-    <form th:action="@{/}" method="POST">
-        <input type="hidden" name="idUser" th:value="${idUser}">
-        <input type="text" name="name" placeholder="Nome">
-        <input type="text" name="breed" placeholder="Raça">
-        <input type="text" name="age" placeholder="Idade">
-        <input type="text" name="weight" placeholder="Peso">
-        <input type="text" name="city" placeholder="Cidade" th:value="${cityUser}">
-        
-        <input type="submit" value="Cadastrar">
 
-    </form>
+    <div role="alert" th:if="${insert}">
+        <form th:action="@{/insertPet}" th:object="${pet}" method="POST">
+            <input type="hidden" name="idUser" th:value="${idUser}">
+            <input type="text" name="name" placeholder="Nome">
+            <input type="text" name="breed" placeholder="Raça">
+            <input type="text" name="age" placeholder="Idade">
+            <input type="text" name="weight" placeholder="Peso">
+            <input type="text" name="city" placeholder="Cidade" th:value="${cityUser}">
+            
+            <input type="submit" value="Cadastrar">
+    
+        </form>
+
+    </div>
+
+    <div role="alert" th:if="${update}">
+        <form th:action="@{/insertPet}" th:object="${pet}" method="POST">
+            <input type="hidden" name="idUser" th:value="${pet.idUser.idLoginUser}">
+            <input type="hidden" name="idPet" th:value="${pet.idPet}">
+            <input type="text" name="name" placeholder="Nome" th:value="${pet.name}">
+            <input type="text" name="breed" placeholder="Raça" th:value="${pet.breed}">
+            <input type="text" name="age" placeholder="Idade" th:value="${pet.age}">
+            <input type="text" name="weight" placeholder="Peso" th:value="${pet.weight}">
+            <input type="text" name="city" placeholder="Cidade" th:value="${pet.city}">
+            
+            <input type="submit" value="Atualizar">
+    
+        </form>
+
+    </div>
+
+    
 </body>
 </html>
