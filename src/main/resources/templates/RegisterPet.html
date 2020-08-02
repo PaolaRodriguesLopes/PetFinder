@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pet</title>
+</head>
+<body>
+    <form th:action="@{/insertUser}" th:object="${author}" method="POST">
+        <input type="hidden" name="idUser" th:value="${author.name}">
+        <input type="text" name="name" placeholder="Nome">
+        <input type="text" name="breed" placeholder="Raça">
+        <input type="text" name="age" placeholder="Idade">
+        <input type="text" name="weight" placeholder="Peso">
+        <input type="text" name="city" placeholder="Cidade" th:value="${author.name}">
+        
+        <input type="submit" value="Cadastrar">
+
+    </form>
+</body>
+</html>

@@ -63,13 +63,16 @@ public class LoginUsersController {
         LoginUsers user = userService.loginUser(users.getEmail(), Util.md5(users.getLoginPassword()));
         
         if(user.getEmail() == null){
-            mv.addObject("msg", "E-mail/senha incorreto. Tente novamente");
+            mv.addObject("msg", "E-mail e/ou senha incorretos. Tente novamente");
         }else{
             session.setAttribute("userSession", user);
             return getIndex();
         }
         return mv;
     }
+
+    
+
 
     
 }

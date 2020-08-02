@@ -1,11 +1,14 @@
 package com.example.pet_finder.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class LoginUsers implements Serializable {
@@ -20,6 +23,10 @@ public class LoginUsers implements Serializable {
     private Integer number;
     private String city;
     private String state;
+
+    @OneToMany
+    @JoinColumn(name="ID_LOGIN_USER")
+    private List<Pet> pets;
 
     public Integer getIdLoginUser() {
         return this.idLoginUser;
@@ -83,6 +90,14 @@ public class LoginUsers implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
 
 }
