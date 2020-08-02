@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+</head>
+<body>
+    <form th:action="@{/insertUser}" method="post">
+        <input type="text" name="name" placeholder="Nome">
+        <input type="text" name="email" placeholder="E-Mail">
+        <input type="text" name="loginPassword" placeholder="Senha">
+        <input type="text" name="street" placeholder="Rua">
+        <input type="text" name="number" placeholder="Numero">
+        <input type="text" name="city" placeholder="Cidade">
+        <input type="text" name="state" placeholder="Estado">
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>
