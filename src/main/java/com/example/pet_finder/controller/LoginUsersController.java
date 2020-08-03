@@ -40,7 +40,7 @@ public class LoginUsersController {
     @GetMapping("/index")
     public ModelAndView getIndex(LoginUsers loginUser)
     {
-        ModelAndView mv = new ModelAndView("pq");
+        ModelAndView mv = new ModelAndView("indexLogin");
 
         mv.addObject("loginUser", loginUser);
 

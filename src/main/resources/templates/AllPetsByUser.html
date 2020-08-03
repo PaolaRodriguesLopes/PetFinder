@@ -17,6 +17,34 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
+    <header>
+        <div class="form-group" th:object="${loginUser}">
+            <div class="col-12" style="background-color:#b898ce;">
+                <center>
+                    <img src="../assets/nav2.png" class="img-fluid float-center" alt="Responsive image" style="width: 500px;height: 150px;background-color: #b898ce;">
+
+                </center>
+    
+            </div>
+    
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" th:href="@{'/allPets/' + ${loginUser.idLoginUser}}">Animais Para Adoção </a>
+                        <a class="nav-item nav-link" th:href="@{'/petPage/' + ${loginUser.idLoginUser}}">Novo Lar Para Meu Pet</a> 
+                        <a class="nav-item nav-link" th:href="@{'/allPetsByUser/' + ${loginUser.idLoginUser}}">Meus Pets Para Adoção</a>                                
+                        <a class="nav-item nav-link " href="/loginPage">Sair</a>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <!--Tabela Pets-->
     <table class="table table-striped">
         <thead>
@@ -24,8 +52,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Raça</th>
                 <th scope="col">Idade</th>
-                <th scope="col">Peso</th>
-                <th scope="col">Idade</th>
+                <th scope="col">Peso (KG)</th>
+                <th scope="col">Cidade</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
 

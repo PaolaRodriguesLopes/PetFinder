@@ -35,6 +35,7 @@ public class PetController {
         mv.addObject("insert", "insert");
         mv.addObject("idUser", loginUser.getIdLoginUser());
         mv.addObject("cityUser", loginUser.getCity());
+        mv.addObject("loginUser", loginUser);
 
         return mv;
     
@@ -51,8 +52,20 @@ public class PetController {
     }  
     
 
-    @GetMapping("/allPets")
-    public ModelAndView getPets(Pet pets)
+    @GetMapping("/allPets/{id}")
+    public ModelAndView getPets(@PathVariable(name="id") Integer id)
+    {
+        ModelAndView mv = new ModelAndView("AllPetsUser");
+        LoginUsers login = userService.getUserById(id);
+
+        mv.addObject("pets", petService.getPets());
+        mv.addObject("loginUser", login);
+
+        return mv;
+    }
+
+    @GetMapping("/allPetsNotLogin")
+    public ModelAndView getPetsNotLogin(Pet pets)
     {
         ModelAndView mv = new ModelAndView("AllPets");
 
@@ -69,6 +82,7 @@ public class PetController {
 
 
         mv.addObject("pets", login.getPets());
+        mv.addObject("loginUser", login);
 
         return mv;
     }
@@ -84,14 +98,15 @@ public class PetController {
     }
 
     @GetMapping("/updatePet")
-    public ModelAndView updateAuthors (@RequestParam Integer id)
+    public ModelAndView updatePet (@RequestParam Integer id)
     {
         ModelAndView mv = new ModelAndView("RegisterPet");
-
         Pet pet = petService.getPetById(id);
+        LoginUsers login = userService.getUserById(pet.getIdUser().getIdLoginUser());
 
         mv.addObject("pet", pet);
         mv.addObject("update", "update");
+        mv.addObject("loginUser", login);
 
 
         return mv;

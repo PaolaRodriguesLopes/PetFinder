@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incio</title>
+    <title>Todos os Animais</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -18,7 +18,7 @@
 </head>
 <body>
     <header>
-        <div class="form-group">
+        <div class="form-group" th:object="${loginUser}">
             <div class="col-12" style="background-color:#b898ce;">
                 <center>
                     <img src="../assets/nav2.png" class="img-fluid float-center" alt="Responsive image" style="width: 500px;height: 150px;background-color: #b898ce;">
@@ -34,18 +34,39 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="/">Início</a>
-                        <a class="nav-item nav-link" href="/allPetsNotLogin">Animais Para Adoção </a>
-                        <a class="nav-item nav-link " href="/loginPage">Login</a>
+                        <a class="nav-item nav-link" th:href="@{'/allPets/' + ${loginUser.idLoginUser}}">Animais Para Adoção </a>
+                        <a class="nav-item nav-link" th:href="@{'/petPage/' + ${loginUser.idLoginUser}}">Novo Lar Para Meu Pet</a> 
+                        <a class="nav-item nav-link" th:href="@{'/allPetsByUser/' + ${loginUser.idLoginUser}}">Meus Pets Para Adoção</a>                                
+                        <a class="nav-item nav-link " href="/loginPage">Sair</a>
                         
                     </div>
                 </div>
             </nav>
         </div>
     </header>
+    <!--Tabela Pets-->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Raça</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Peso (KG)</th>
+                <th scope="col">Cidade</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pet : ${pets}" scope="row">
+                <td th:text="${pet.name}"></td>
+                <td th:text="${pet.breed}"></td> 
+                <td th:text="${pet.age}"></td> 
+                <td th:text="${pet.weight}"></td> 
+                <td th:text="${pet.city}"></td>                      
+               
+            </tr>
+        </tbody>
 
-    <img src="../assets/petfinder.png" class="rounded float-left" style="width: 65%;">
-    <img src="../assets/foundation.jpg" class="rounded float-right" style="width: 27%;">
-   
+    </table>
 </body>
 </html>
