@@ -96,5 +96,18 @@ public class PetController {
 
         return mv;
     }
+
+    @GetMapping("/sendEmail")
+    public ModelAndView sendEmail (@RequestParam Integer id)
+    {
+        ModelAndView mv = new ModelAndView("SendEmail");
+
+        Pet pet = petService.getPetById(id);
+
+        mv.addObject("pet", pet);
+
+
+        return mv;
+    }
    
 }
